@@ -1,7 +1,7 @@
 #include<iostream>
 #include<stack>
 using namespace std;
-bool isBalenced(string str){
+bool isBalanced(string str){
     stack<char> s;
     for(int i=0;i<str.length();i++){
         if(str[i]== '(' || str[i]=='{' || str[i]=='['){
@@ -33,7 +33,7 @@ bool isBalenced(string str){
 }
 int main(){
     string str = "{[()]}";
-    if(isBalenced(str)){
+    if(isBalanced(str)){
         cout<<"Balanced"<<endl;
     }
     else{
