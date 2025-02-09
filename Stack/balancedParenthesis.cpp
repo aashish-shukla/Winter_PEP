@@ -1,43 +1,40 @@
 #include<iostream>
 #include<stack>
 using namespace std;
-bool isBalanced(string str){
-    stack<char> s;
-    for(int i=0;i<str.length();i++){
-        if(str[i]== '(' || str[i]=='{' || str[i]=='['){
-            s.push(str[i]);
-        }
-        else if(str[i]==')'){
-            if(s.empty() || s.top()!='('){
-                return false;
-            }
-            s.pop();
-        }
-        else if(str[i]=='}'){
-            if(s.empty() || s.top()!='{'){
-                return false;
-            }
-            s.pop();
-        }
-        else if(str[i]==']'){
-            if(s.empty() || s.top()!='['){
-                return false;
-            }
-            s.pop();
 
+string balancedParenthesis(string s){
+    stack<char> st;
+    for(int i=0;i<s.length();i++){
+        if(s[i]=='(' || s[i]=='{' || s[i]=='['){
+            st.push(s[i]);
         }
-
+        else{
+            if(st.empty()){
+                return "NO";
+            }
+            char c=st.top();
+            st.pop();
+            if(s[i]==')' && c!='('){
+                return "NO";
+            }
+            if(s[i]=='}' && c!='{'){
+                return "NO";
+            }
+            if(s[i]==']' && c!='['){
+                return "NO";
+            }
+        }
     }
-    return s.empty();
-
+    if(st.empty()){
+        return "YES";
+    }
+    return "NO";
 }
+
 int main(){
-    string str = "{[()]}";
-    if(isBalanced(str)){
-        cout<<"Balanced"<<endl;
-    }
-    else{
-        cout<<"Not Balanced"<<endl;
-    }
+    string s;
+    cin>>s;
+    cout<<balancedParenthesis(s);
     return 0;
 }
+    
