@@ -18,3 +18,9 @@ string removeOccurrences(string s, string part) {
         }
         return res;
 }
+int main(){
+    string s,part;
+    cin>>s>>part;
+    cout<<removeOccurrences(s,part)<<endl;
+    return 0;
+}
